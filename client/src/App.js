@@ -79,7 +79,7 @@ const App = () => {
         <Router>
           {redirection()}
           {isLoggedIn && <Navigation />}
-          <main className={isLoggedIn && 'main-adjustment'}>
+          <main className={isLoggedIn ? 'main-adjustment' : ''}>
             {renderRoutes()}
           </main>
         </Router>

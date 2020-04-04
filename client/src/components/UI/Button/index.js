@@ -16,9 +16,7 @@ const Button = props => {
 
 Button.defaultProps = {
   type: 'button',
-  className: '',
-  children: null,
-  onClick: null
+  className: ''
 }
 
 export default Button

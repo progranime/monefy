@@ -4,6 +4,9 @@
 @import './global/variable.scss';
 
 .main-adjustment {
-  margin-left: 250px;
   padding: 15px;
+
+  @include media-breakpoint-up(sm) {
+    margin-left: 250px;
+  }
 }
