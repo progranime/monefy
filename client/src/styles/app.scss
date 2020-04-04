@@ -1,0 +1,9 @@
+// bootstrap package
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+@import './global/variable.scss';
+
+.main-adjustment {
+  margin-left: 250px;
+  padding: 15px;
+}
