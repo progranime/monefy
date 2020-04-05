@@ -1,0 +1,25 @@
+.image-upload {
+  position: relative;
+  &__container {
+  }
+
+  &__preview {
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+  }
+
+  input[type='file'] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}
