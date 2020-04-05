@@ -63,7 +63,6 @@ $sm: 576px;
     width: 80vw;
     height: 100vh;
     overflow-y: auto;
-    border-right: 1px solid #ccc;
     background-color: #fff;
     transition: 0.3s ease-in-out;
     transform: translateX(-100%);
@@ -73,6 +72,7 @@ $sm: 576px;
       transition: none;
       width: 250px;
       transform: translateX(0%);
+      box-shadow: 0px 0px 5px #ddd;
     }
 
     &.active {
@@ -103,8 +103,10 @@ $sm: 576px;
     justify-content: center;
     img {
       display: block;
-      width: 80px;
+      width: 120px;
       text-align: center;
+      border-radius: 100%;
+      border: 3px solid #7ac795;
     }
   }
 
@@ -115,16 +117,24 @@ $sm: 576px;
 
     li {
       width: 100%;
-      padding: 10px 15px;
 
       &:hover {
         background-color: #f1f1f1;
       }
 
-      a {
+      a,
+      .btn {
         display: block;
         color: #000;
         text-decoration: none;
+        padding: 10px 15px;
+        width: 100%;
+        text-align: left;
+
+        &.active {
+          background-color: #7ac795;
+          color: #fff;
+        }
       }
     }
   }
@@ -137,6 +147,7 @@ $sm: 576px;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: none;
+    z-index: 90;
 
     @media (min-width: $sm) {
       display: none;

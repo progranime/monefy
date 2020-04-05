@@ -1,7 +1,13 @@
 import React from 'react'
 
+import { Banner } from '../../components/UI'
+
 const Budget = () => {
-  return <div>Budget page</div>
+  return (
+    <div>
+      <Banner title='Budget' />
+    </div>
+  )
 }
 
 export default Budget

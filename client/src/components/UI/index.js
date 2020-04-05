@@ -1,4 +1,6 @@
+export { default as Banner } from './Banner'
 export { default as Button } from './Button'
+export { default as Card } from './Card'
 export { default as Form } from './Form'
 export { default as FormGroup } from './Form/Group'
 export { default as Input } from './Input'

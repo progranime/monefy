@@ -1,0 +1,24 @@
+.card {
+  border: none !important;
+  border-radius: 5px;
+  box-shadow: 3px 3px 8px #ccc;
+
+  &__header {
+    padding: 10px 15px;
+    border-bottom: 2px solid #7ac795;
+
+    p {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  &__body {
+    padding: 15px;
+  }
+
+  &__footer {
+    padding: 15px;
+  }
+}

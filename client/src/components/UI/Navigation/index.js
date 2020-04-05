@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import './index.scss'
 import { Button } from '../index'
@@ -37,7 +37,7 @@ const Navigation = () => {
             <div className='navigation__profile-image-holder'>
               <Link to='/profile' onClick={navDrawerHandler}>
                 <img
-                  src='https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png'
+                  src='https://media-exp1.licdn.com/dms/image/C5103AQGjrqkWxoYGhw/profile-displayphoto-shrink_200_200/0?e=1591833600&v=beta&t=pyxAVJmyaOHccXL4zCnQ8LdIbNPf2oGgGmsZg3_5Gwg'
                   alt=''
                 />
               </Link>
@@ -47,24 +47,41 @@ const Navigation = () => {
           </div>
           <ul className='navigation__list'>
             <li>
-              <Link to='/' onClick={navDrawerHandler}>
+              <NavLink
+                to='/'
+                exact
+                onClick={navDrawerHandler}
+                activeClassName='active'
+              >
                 Overview
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to='/transactions' onClick={navDrawerHandler}>
+              <NavLink
+                to='/transactions'
+                onClick={navDrawerHandler}
+                activeClassName='active'
+              >
                 Transactions
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to='/budget' onClick={navDrawerHandler}>
+              <NavLink
+                to='/budget'
+                onClick={navDrawerHandler}
+                activeClassName='active'
+              >
                 Budget
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to='/settings' onClick={navDrawerHandler}>
+              <NavLink
+                to='/settings'
+                onClick={navDrawerHandler}
+                activeClassName='active'
+              >
                 Settings
-              </Link>
+              </NavLink>
             </li>
             <li>
               <Button
