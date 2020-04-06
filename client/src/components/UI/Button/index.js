@@ -18,6 +18,7 @@ const Button = (props) => {
 Button.defaultProps = {
     type: 'button',
     className: '',
+    disabled: false,
 }
 
 export default Button

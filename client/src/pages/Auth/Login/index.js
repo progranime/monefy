@@ -26,7 +26,6 @@ const Login = () => {
         blurHandler,
         submitHandler,
         errors,
-        isValid,
     } = useForm(initialState, loginValidation)
 
     const onSubmit = () => {
@@ -68,11 +67,7 @@ const Login = () => {
                 />
                 {errors.password && <FormError message={errors.password} />}
             </FormGroup>
-            <Button
-                type='submit'
-                className='btn btn-primary btn-block'
-                disabled={!isValid}
-            >
+            <Button type='submit' className='btn btn-primary btn-block'>
                 Login
             </Button>
 
