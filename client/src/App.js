@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect,
+    Redirect
 } from 'react-router-dom'
 
 import { Navigation } from './components/UI'
@@ -17,7 +17,7 @@ import Profile from './pages/Profile'
 import { AuthContext } from './context/auth'
 
 const App = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
 
     const login = useCallback(() => {
         setIsLoggedIn(true)

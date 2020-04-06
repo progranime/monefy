@@ -21,23 +21,29 @@ export const useForm = (initialState, validate) => {
     const changeHandler = (e) => {
         setValues({
             ...values,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         })
     }
 
     const blurHandler = () => {
-        const validationErrors = validate(values)
-        setErrors(validationErrors)
-        setIsSubmitting(true)
+        if (validate !== undefined) {
+            const validationErrors = validate(values)
+            setErrors(validationErrors)
+            setIsSubmitting(true)
+        }
     }
 
     const submitHandler = (callback, e) => {
         e.preventDefault()
-        const validationErrors = validate(values)
-        setErrors(validationErrors)
-        setIsSubmitting(true)
+        if (validate !== undefined) {
+            const validationErrors = validate(values)
+            setErrors(validationErrors)
+            setIsSubmitting(true)
 
-        if (isValid) {
+            if (isValid) {
+                callback()
+            }
+        } else {
             callback()
         }
     }
@@ -49,6 +55,6 @@ export const useForm = (initialState, validate) => {
         blurHandler,
         submitHandler,
         errors,
-        isValid,
+        isValid
     }
 }

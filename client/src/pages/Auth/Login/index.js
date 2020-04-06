@@ -7,7 +7,7 @@ import {
     Label,
     Form,
     FormGroup,
-    FormError,
+    FormError
 } from '../../../components/UI'
 import { useForm } from '../../../hooks/useForm'
 import { AuthContext } from '../../../context/auth'
@@ -15,7 +15,7 @@ import { loginValidation } from '../../../utils/validations/auth'
 
 const initialState = {
     email: '',
-    password: '',
+    password: ''
 }
 
 const Login = () => {
@@ -25,7 +25,7 @@ const Login = () => {
         changeHandler,
         blurHandler,
         submitHandler,
-        errors,
+        errors
     } = useForm(initialState, loginValidation)
 
     const onSubmit = () => {
@@ -45,7 +45,9 @@ const Login = () => {
                 <Label htmlFor='email'>Email</Label>
                 <Input
                     type='text'
-                    className='form-control'
+                    className={`form-control ${
+                        errors.email ? 'form__invalid' : ''
+                    }`}
                     id='email'
                     name='email'
                     onBlur={blurHandler}
@@ -58,7 +60,9 @@ const Login = () => {
                 <Label htmlFor='password'>Password</Label>
                 <Input
                     type='password'
-                    className='form-control'
+                    className={`form-control ${
+                        errors.password ? 'form__invalid' : ''
+                    }`}
                     id='password'
                     name='password'
                     onBlur={blurHandler}
