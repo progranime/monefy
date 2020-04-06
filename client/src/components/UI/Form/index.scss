@@ -1,21 +1,29 @@
 .form {
-  &__logo {
-    width: 80px;
-    margin: 0 auto;
-    display: block;
-  }
+    &__logo {
+        width: 80px;
+        margin: 0 auto;
+        display: block;
+    }
 
-  &--login,
-  &--register {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 100%;
-    width: 500px;
-    margin: 0 auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 15px 45px;
-  }
+    &__error {
+        p {
+            color: red;
+            margin: 0;
+            font-size: 12px;
+        }
+    }
+
+    &--login,
+    &--register {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 100%;
+        width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 15px 45px;
+    }
 }
