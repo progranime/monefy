@@ -64,7 +64,7 @@ const Profile = () => {
                     onSubmit={submitHandler.bind(this, onSubmit)}
                 >
                     <div className='row'>
-                        <div className='col col-sm-4'>
+                        <div className='col-12 col-sm-4'>
                             <FormGroup>
                                 <ImageUpload
                                     id='profilePicture'
@@ -80,7 +80,7 @@ const Profile = () => {
                                 )}
                             </FormGroup>
                         </div>
-                        <div className='col col-sm-8'>
+                        <div className='col-12 col-sm-8'>
                             <FormGroup>
                                 <Label htmlFor='firstName'>First Name</Label>
                                 <Input
