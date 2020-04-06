@@ -18,11 +18,33 @@ export const useForm = (initialState, validate) => {
         }
     }, [errors, isSubmitting])
 
+    useEffect(() => {
+        if (!values.profilePicture) return
+
+        const fileReader = new FileReader()
+        fileReader.onload = (e) => {
+            setValues({
+                ...values,
+                profilePicturePreview: fileReader.result
+            })
+        }
+        fileReader.readAsDataURL(values.profilePicture)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [values.profilePicture])
+
     const changeHandler = (e) => {
         setValues({
             ...values,
             [e.target.name]: e.target.value
         })
+    }
+
+    const imageHandler = (e) => {
+        if (e.target.files)
+            setValues({
+                ...values,
+                [e.target.name]: e.target.files[0]
+            })
     }
 
     const blurHandler = () => {
@@ -52,6 +74,7 @@ export const useForm = (initialState, validate) => {
         values,
         setValues,
         changeHandler,
+        imageHandler,
         blurHandler,
         submitHandler,
         errors,

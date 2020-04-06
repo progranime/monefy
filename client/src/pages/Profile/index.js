@@ -1,103 +1,156 @@
 import React from 'react'
 
-import { useInput } from '../../hooks/useInput'
-import { useImage } from '../../hooks/useImage'
+import { useForm } from '../../hooks/useForm'
 import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  Card,
-  Banner,
-  ImageUpload,
-  Select
+    Form,
+    FormGroup,
+    FormError,
+    Label,
+    Input,
+    Button,
+    Card,
+    Banner,
+    ImageUpload,
+    Select
 } from '../../components/UI'
+import { profileValidation } from '../../utils/validations/profile'
+
+const initialState = {
+    firstName: '',
+    lastName: '',
+    gender: '',
+    profilePicture: null,
+    profilePicturePreview: '',
+    fileElement: ''
+}
 
 const Profile = () => {
-  const { value: firstName, bind: bindFirstName } = useInput('')
-  const { value: lastName, bind: bindLastName } = useInput('')
-  const { imageHandler, previewUrl, file } = useImage()
-  const { value: gender, bind: bindGender } = useInput('')
+    const {
+        values,
+        changeHandler,
+        imageHandler,
+        submitHandler,
+        blurHandler,
+        errors
+    } = useForm(initialState, profileValidation)
 
-  const submitHandler = e => {
-    e.preventDefault()
+    const onSubmit = () => {
+        const {
+            firstName,
+            lastName,
+            profilePicture,
+            gender,
+            profilePicturePreview
+        } = values
+        let data = {
+            firstName,
+            lastName,
+            profilePicture,
+            profilePicturePreview,
+            gender
+        }
 
-    let data = {
-      firstName,
-      lastName,
-      file,
-      gender
+        console.log(data)
+        console.log('updated!')
     }
 
-    console.log(data)
-  }
+    return (
+        <>
+            <Banner title='Profile' />
 
-  return (
-    <>
-      <Banner title='Profile' />
-
-      <Card title='Update Profile'>
-        <Form className='form form--profile' onSubmit={submitHandler}>
-          <div className='row'>
-            <div className='col col-sm-4'>
-              <FormGroup>
-                <ImageUpload
-                  id='profilePicture'
-                  name='profilePicture'
-                  imageHandler={imageHandler}
-                  previewUrl={previewUrl}
-                />
-              </FormGroup>
-            </div>
-            <div className='col col-sm-8'>
-              <FormGroup>
-                <Label htmlFor='firstName'>First Name</Label>
-                <Input
-                  type='text'
-                  name='firstName'
-                  id='firstName'
-                  className='form-control'
-                  {...bindFirstName}
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label htmlFor='lastName'>Last Name</Label>
-                <Input
-                  type='text'
-                  name='lastName'
-                  id='lastName'
-                  className='form-control'
-                  {...bindLastName}
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label htmlFor='gender'>Gender</Label>
-                <Select
-                  className='form-control'
-                  id='gender'
-                  name='gender'
-                  {...bindGender}
+            <Card title='Update Profile'>
+                <Form
+                    className='form form--profile'
+                    onSubmit={submitHandler.bind(this, onSubmit)}
                 >
-                  <option disabled>Please choose your gender</option>
-                  <option value='1'>Male</option>
-                  <option value='2'>Female</option>
-                </Select>
-              </FormGroup>
-            </div>
-          </div>
+                    <div className='row'>
+                        <div className='col col-sm-4'>
+                            <FormGroup>
+                                <ImageUpload
+                                    id='profilePicture'
+                                    name='profilePicture'
+                                    onBlur={blurHandler}
+                                    imageHandler={imageHandler}
+                                    previewUrl={values.profilePicturePreview}
+                                />
+                                {errors.profilePicture && (
+                                    <FormError
+                                        message={errors.profilePicture}
+                                    />
+                                )}
+                            </FormGroup>
+                        </div>
+                        <div className='col col-sm-8'>
+                            <FormGroup>
+                                <Label htmlFor='firstName'>First Name</Label>
+                                <Input
+                                    type='text'
+                                    name='firstName'
+                                    id='firstName'
+                                    className={`form-control ${
+                                        errors.firstName ? 'form__invalid' : ''
+                                    }`}
+                                    onBlur={blurHandler}
+                                    onChange={changeHandler}
+                                    value={values.firstName}
+                                />
+                                {errors.firstName && (
+                                    <FormError message={errors.firstName} />
+                                )}
+                            </FormGroup>
 
-          <div className='text-right'>
-            <Button type='submit' className='btn btn-primary'>
-              Update Profile
-            </Button>
-          </div>
-        </Form>
-      </Card>
-    </>
-  )
+                            <FormGroup>
+                                <Label htmlFor='lastName'>Last Name</Label>
+                                <Input
+                                    type='text'
+                                    name='lastName'
+                                    id='lastName'
+                                    className={`form-control ${
+                                        errors.lastName ? 'form__invalid' : ''
+                                    }`}
+                                    onBlur={blurHandler}
+                                    onChange={changeHandler}
+                                    value={values.lastName}
+                                />
+                                {errors.lastName && (
+                                    <FormError message={errors.lastName} />
+                                )}
+                            </FormGroup>
+
+                            <FormGroup>
+                                <Label htmlFor='gender'>Gender</Label>
+                                <Select
+                                    className={`form-control ${
+                                        errors.gender ? 'form__invalid' : ''
+                                    }`}
+                                    id='gender'
+                                    name='gender'
+                                    onBlur={blurHandler}
+                                    onChange={changeHandler}
+                                    value={values.gender}
+                                >
+                                    <option disabled>
+                                        Please choose your gender
+                                    </option>
+                                    <option value='1'>Male</option>
+                                    <option value='2'>Female</option>
+                                </Select>
+                                {errors.gender && (
+                                    <FormError message={errors.gender} />
+                                )}
+                            </FormGroup>
+                        </div>
+                    </div>
+
+                    <div className='text-right'>
+                        <Button type='submit' className='btn btn-primary'>
+                            Update Profile
+                        </Button>
+                    </div>
+                </Form>
+            </Card>
+        </>
+    )
 }
 
 export default Profile

@@ -3,7 +3,7 @@ export const REQUIRED = (value) => {
 }
 
 export const REQUIRED_IMAGE = (value) => {
-    return value.length === 0
+    return value !== undefined
 }
 
 export const VALID_EMAIL = (value) => {
